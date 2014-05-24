@@ -19,7 +19,6 @@ textarea {
 }
 
 html {
-    font-size: 1em;
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
     line-height: 1.4;
@@ -55,65 +54,63 @@ div#code {
 }
 
 div#vmenu {
-    margin-left: 25px;
     padding: 2.25em 0em .25em 0em;
-    width: 5em;
-    font-size: 1.5em;
+    width: 150px;
+    text-align: right;
 }
 
 div#vmenu ul {
-    margin: 0;
     padding: 0;
     list-style: none;
 }
 
 div#vmenu ul li {
-    margin: 0;
     padding-bottom: 25px;
     list-style: none;
 }
 
 div#vmenu ul a:link {
-    margin: 0;
-    padding: .2em 0em .2em .4em;
+    padding-right: 10px;
     text-decoration: none;
     font-weight: bold;
-    font-size: medium;
+    font-size: x-large;
     color: #ffffff;
-    background: #494949;
     display: block;
 }
 
 div#vmenu ul a:active {
-    margin: 0;
-    padding: .25em .5em .25em .5em;
     text-decoration: none;
     font-weight: bold;
-    font-size: medium;
-    background: #363636;
-    color: #ffffff;
+    font-size: x-large;
+    background: #ffffff;
+    color: #121212;
     display: block;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 div#vmenu ul a:visited {
     margin: 0;
-    padding:  .25em .5em .25em .5em;
     text-decoration: none;
     font-weight: bold;
-    font-size: medium;
+    font-size: x-large;
     color: #ffffff;
     display: block;
 }
 
 div#vmenu ul li a:hover {
-    margin: 0;
-    padding: .2em 0em .2em .4em;
     text-decoration: none;
     font-weight: bold;
-    font-size: medium;
-    background-color: #363636;
-    color: #ffffff;
+    font-size: x-large;
+    background-color: #ffffff;
+    color: #121212;
     display: block;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 /*
