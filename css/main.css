@@ -32,13 +32,12 @@ h2 {
 
 #content {
     border: 1px solid #ffffff;
-    position: fixed;
+    position: absolute;
     top: 25px;
-    bottom: 25px;
-    left: 20%;
-    right: 10%;
-    padding-left: 20px;
-    padding-right: 20px;
+    left: 15%;
+    right: 5%;
+    padding-left: 50px;
+    padding-right: 50px;
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
@@ -198,7 +197,6 @@ textarea {
 .ir {
     background-color: transparent;
     border: 0;
-    overflow: hidden;
     /* IE 6/7 fallback */
     *text-indent: -9999px;
 }
@@ -228,7 +226,6 @@ textarea {
     clip: rect(0 0 0 0);
     height: 1px;
     margin: -1px;
-    overflow: hidden;
     padding: 0;
     position: absolute;
     width: 1px;
