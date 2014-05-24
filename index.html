@@ -11,8 +11,10 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="js/google-code-prettify/prettify.css">
+        <script src="js/google-code-prettify/prettify.js"></script>
     </head>
-    <body>
+    <body onload="prettyPrint()">
         <div id="vmenu">
             <ul>
                 <li><a href="/index.html">Home</a></li>
@@ -23,6 +25,19 @@
 
         <div id="content">
             <h2>BitByte</h2>
+            <h3>Code</h3>
+            <pre class="prettyprint linenums">
+    public class MyClass {
+        private MyInterface myInterface;
+
+        public MyClass(MyInterface myInterface) {
+            this.myInterface = myInterface;
+        }
+
+        public String getString() {
+            return myInterface.getString();
+        }
+    }</pre>
         </div>
     </body>
 </html>
