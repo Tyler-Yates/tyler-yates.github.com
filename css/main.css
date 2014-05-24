@@ -64,23 +64,24 @@ div#code {
     font-weight: bold;
 }
 
-div#vmenu {
+div.vmenu {
     padding: 2.25em 0em .25em 0em;
-    width: 150px;
+    width: 10%;
     text-align: right;
+    position: fixed;
 }
 
-div#vmenu ul {
+div.vmenu ul {
     padding: 0;
     list-style: none;
 }
 
-div#vmenu ul li {
+div.vmenu ul li {
     padding-bottom: 25px;
     list-style: none;
 }
 
-div#vmenu ul a:link {
+div.vmenu ul a:link {
     padding-right: 10px;
     text-decoration: none;
     font-weight: bold;
@@ -89,7 +90,7 @@ div#vmenu ul a:link {
     display: block;
 }
 
-div#vmenu ul a:active {
+div.vmenu ul a:active {
     text-decoration: none;
     font-weight: bold;
     font-size: x-large;
@@ -102,7 +103,7 @@ div#vmenu ul a:active {
     border-bottom-right-radius: 5px;
 }
 
-div#vmenu ul a:visited {
+div.vmenu ul a:visited {
     margin: 0;
     text-decoration: none;
     font-weight: bold;
@@ -111,7 +112,7 @@ div#vmenu ul a:visited {
     display: block;
 }
 
-div#vmenu ul li a:hover {
+div.vmenu ul li a:hover {
     text-decoration: none;
     font-weight: bold;
     font-size: x-large;

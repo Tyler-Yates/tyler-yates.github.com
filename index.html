@@ -33,13 +33,24 @@
                     $(this).animate({
                         color: originalCol,
                         opacity: original
-                    },500);
+                    },1000);
+                });
+
+                var navElement = $('.vmenu a');
+                navElement.hover(function() { //mouseover
+                    $(this).animate({
+                        width: '+=15px'
+                    },300);
+                },function() { //mouseout
+                    $(this).animate({
+                        width: '-=15px'
+                    },300);
                 });
             });
         </script>
     </head>
     <body onload="prettyPrint()">
-        <div id="vmenu">
+        <div class="vmenu">
             <ul>
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="/content/tutorials.html">Tutorials </a></li>
@@ -48,11 +59,11 @@
         </div>
 
         <div class="left-bar">
-            <a href="https://plus.google.com/+TylerYatesUT/about" target="_blank"><i class="fa fa-google-plus fa-5x"></i></a>
-            <p></p>
-            <a href="https://www.linkedin.com/pub/tyler-yates/59/17b/667/" target="_blank"><i class="fa fa-linkedin fa-5x"></i></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://github.com/Tyler-Yates" target="_blank"><i class="fa fa-github fa-5x"></i></a>
+            <a href="https://plus.google.com/+TylerYatesUT/about" target="_blank"><i class="fa fa-google-plus fa-4x"></i></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://www.linkedin.com/pub/tyler-yates/59/17b/667/" target="_blank"><i class="fa fa-linkedin fa-4x"></i></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/Tyler-Yates" target="_blank"><i class="fa fa-github fa-4x"></i></a>
         </div>
 
         <div id="content">
