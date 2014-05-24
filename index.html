@@ -12,6 +12,7 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.color-2.1.2.min.js"></script>
+        <script src="js/jquery.hoverIntent.minified.js"></script>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
         <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="js/google-code-prettify/prettify.css">
@@ -22,8 +23,8 @@
             $(document).ready(function() {
                 var randomLinks = $('.left-bar a');
                 var originalCol = randomLinks.css('color');
-                var original = randomLinks.css('opacity');
-                randomLinks.hover(function() { //mouseover
+                var originalOpacity = randomLinks.css('opacity');
+                randomLinks.hoverIntent(function() { //mouseover
                     var col = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
                     $(this).animate({
                         color: col,
@@ -32,20 +33,24 @@
                 },function() { //mouseout
                     $(this).animate({
                         color: originalCol,
-                        opacity: original
+                        opacity: originalOpacity
                     },1000);
-                });
+                }, 100);
 
                 var navElement = $('.vmenu a');
-                navElement.hover(function() { //mouseover
+                navElement.hoverIntent(function() { //mouseover
                     $(this).animate({
-                        width: '+=15px'
-                    },300);
+                        width: '+=15px',
+                        color: '#121212',
+                        backgroundColor: '#ffffff'
+                    },500);
                 },function() { //mouseout
                     $(this).animate({
-                        width: '-=15px'
-                    },300);
-                });
+                        width: '-=15px',
+                        color: '#ffffff',
+                        backgroundColor: '#121212'
+                    },500);
+                }, 100);
             });
         </script>
     </head>
