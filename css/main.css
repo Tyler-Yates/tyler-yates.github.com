@@ -73,6 +73,14 @@ h3 {
     font-size: 1.2em;
 }
 
+.htmltag {
+    color: #E8BF6A;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-family: 'Courier New', sans-serif;
+}
+
 .left-bar {
     position: fixed;
     text-align: center;
