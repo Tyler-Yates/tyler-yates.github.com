@@ -6,7 +6,7 @@ title: Random Name Generation
 {% include header.html %}
 <h3>{{ page.title }}</h3>
 Have you ever needed a quick and dirty way to generate random names for objects? The
-<a href="http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html">UUID</a> class may come in handy. UUID stands
+<a href="http://docs.oracle.com/javase/7/docs/api/java/util/UUID.html" target="_blank">UUID</a> class may come in handy. UUID stands
 for Universally Unique IDentifier and has been around for a long time (since Java 1.5 to be exact).
 <p></p>
 A UUID is a 128 bit number that takes the following form:
@@ -16,10 +16,10 @@ xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 </div>
 <br>
 Each 'x' can be a lower-case letter or digit. The total number of possible UUIDs is 16
-<sup>32</sup> which equals 340,282,366,920,938,463,463,374,607,431,768,211,456. Because of the massive size of the
+<sup>32</sup> which equals 340,282,366,920,<wbr>938,463,463,374,<wbr>607,431,768,211,<wbr>456. Because of the massive size of the
 sample space it is HIGHLY unlikely that any two randomly generated UUIDs will be the same.
 <p></p>
-Let's look at some sample code for how to generate a random naming using a UUID:
+Let's look at some sample code for how to generate a random name using a UUID:
 <br>
 <pre class="prettyprint linenums">
 import java.util.UUID;
