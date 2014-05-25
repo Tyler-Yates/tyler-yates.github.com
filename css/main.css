@@ -25,6 +25,10 @@ html {
     background: #090909;
 }
 
+a {
+    color: #ffffff;
+}
+
 h2 {
     text-align: center;
     font-size: 2em;
@@ -40,8 +44,7 @@ h2 {
 
 .content {
     border: 1px solid #ffffff;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding: 20px 50px;
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
