@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BitByte</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.color-2.1.2.min.js"></script>
+    <script src="js/jquery.hoverIntent.minified.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="js/google-code-prettify/prettify.css">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <script src="js/google-code-prettify/prettify.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var randomLinks = $('.left-bar a');
+            var originalCol = randomLinks.css('color');
+            var originalOpacity = randomLinks.css('opacity');
+            randomLinks.hoverIntent(function() { //mouseover
+                var col = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+                $(this).animate({
+                    color: col,
+                    opacity: 1.0
+                },1000);
+            },function() { //mouseout
+                $(this).animate({
+                    color: originalCol,
+                    opacity: originalOpacity
+                },1000);
+            }, 100);
+
+            var navElement = $('.vmenu a');
+            navElement.hoverIntent(function() { //mouseover
+                $(this).animate({
+                    width: '+=15px',
+                    color: '#121212',
+                    backgroundColor: '#ffffff'
+                },500);
+            },function() { //mouseout
+                $(this).animate({
+                    width: '-=15px',
+                    color: '#ffffff',
+                    backgroundColor: '#121212'
+                },500);
+            }, 100);
+        });
+    </script>
+</head>
+<body onload="prettyPrint()">
+<div class="vmenu">
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/content/tutorials.html">Tutorials </a></li>
+        <li><a href="/content/rants.html">Rants </a></li>
+    </ul>
+</div>
+
+<div class="left-bar">
+    <a href="https://plus.google.com/+TylerYatesUT/about" target="_blank"><i class="fa fa-google-plus fa-4x"></i></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.linkedin.com/pub/tyler-yates/59/17b/667/" target="_blank"><i class="fa fa-linkedin fa-4x"></i></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/Tyler-Yates" target="_blank"><i class="fa fa-github fa-4x"></i></a>
+</div>
+
+<div class="page">
+<div class="content">
+<body onload="prettyPrint()">
+<div class="vmenu">
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/content/tutorials.html">Tutorials </a></li>
+        <li><a href="/content/rants.html">Rants </a></li>
+    </ul>
+</div>
+
+<div class="left-bar">
+    <a href="https://plus.google.com/+TylerYatesUT/about" target="_blank"><i class="fa fa-google-plus fa-4x"></i></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.linkedin.com/pub/tyler-yates/59/17b/667/" target="_blank"><i class="fa fa-linkedin fa-4x"></i></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/Tyler-Yates" target="_blank"><i class="fa fa-github fa-4x"></i></a>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h2>BitByte</h2>
+        <h3>Code</h3>
+            <pre class="prettyprint linenums">
+    import java.util.ArrayList;
+    import java.util.Stack;
+
+    public class Staqueue {
+        public static void main(String args[]) {
+            Squeue<Integer> squeue = new Squeue<Integer>();
+
+                ArrayList<Integer> nums = new ArrayList<Integer>();
+                    for(int i=0; i<10; i++) {
+                    nums.add((int)(Math.random()*20));
+                    }
+
+                    while(!nums.isEmpty()) {
+                    System.out.println(squeue);
+                    System.out.println("Adding: "+nums.get(0)+"\n");
+                    squeue.enqueue(nums.remove(0));
+                    }
+
+                    while(!squeue.isEmpty()) {
+                    System.out.println("Removed: "+squeue.dequeue());
+                    System.out.println(squeue);
+                    }
+                    }
+                    }
+
+                    class Squeue<E> {
+                        //S1 will hold elements in "limbo"
+                        //S2 will then pop elements off of S1 to serve as the queue
+                        Stack<E> s1, s2;
+
+                            public Squeue() {
+                            s1 = new Stack();
+                            s2 = new Stack();
+                            }
+
+                            public void enqueue(E item) {
+                            s1.push(item);
+                            }
+
+                            @TEST
+                            public E dequeue() {
+                            //If S2 is empty, then we need to empty S1
+                            if(s2.isEmpty()) {
+                            //If S1 is also empty, there are no elements to dequeue
+                            if(s1.isEmpty()) {
+                            return null;
+                            }
+
+                            while(!s1.isEmpty()) {
+                            s2.push(s1.pop());
+                            }
+                            }
+
+                            return s2.pop();
+                            }
+
+                            public boolean isEmpty() {
+                            return s1.isEmpty() && s2.isEmpty();
+                            }
+
+                            public String toString() {
+                            String val = "S1: "+s1+"  S2: "+s2;
+                            return val;
+                            }
+                            }</pre>
+    </div>
+</div>
+</body>
+</html>
