@@ -12,8 +12,8 @@ Many times, web browsers break up long words in ways that don't look very appeal
 the browser decide where to break up words. The tag is <span class="htmltag">&lt;wbr&gt;</span> and stands for Word Break Opportunity.
 <p></p>
 An important thing to remember about <span class="htmltag">&lt;wbr&gt;</span> is that it is a suggestion, not a rule. The browser can choose to
-ignore the tag if it wants to. If the browser does decide to break the word at the given tag, no hyphen is added. This is good for breaking up long
-numbers for example as no hyphenation is needed.
+ignore the tag if it wants to. In general, browsers will only insert word breaks when the word will not fit on a single line. If the browser
+does decide to break the word at the given tag, no hyphen is added. This is good for breaking up long numbers for example as no hyphenation is needed.
 <p></p>
 Here is an example of the tag:
 <pre class="prettyprint linenums">
@@ -40,7 +40,8 @@ Or the browser could choose to insert word breaks where you put the tags:
 This is a long number: <br>234,928,347,<br>789,020,589,<br>120,009,293
 </div>
 <br>
-Note: If you look at the source for this page, you won't see <span class="htmltag">&lt;wbr&gt;</span> tags in the above examples. This is because I use explicit new line tags
+Note: If you look at the source for this page, you won't see <span
+class="htmltag">&lt;wbr&gt;</span> tags in the above examples. This is because I use explicit new line tags
 to illustrate an example.
 
 {% include footer.html %}
