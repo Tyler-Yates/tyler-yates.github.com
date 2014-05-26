@@ -121,6 +121,21 @@ h3 {
     font-family: 'Source Code Pro', sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px #ffffff;
+    border-color: #ffffff;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
 .left-bar {
     position: fixed;
     text-align: center;
