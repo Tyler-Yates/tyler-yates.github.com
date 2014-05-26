@@ -110,6 +110,15 @@ Now that we have the import statements working, let's dissect the testing code.
 This code segment initializes the input for all of the tests that we will run. The <span class="annotationtag">@Before</span>
 annotation tells JUnit to run the method before every test. This is useful for setting up
 variables that will be used in every test. In this case, every test will have the same input array.
+<p>
+Additionally, you can use the <span class="annotationtag">@After</span> annotation to tell JUnit to
+run a method after every test.
+<p>
+JUnit can also run methods once for the entire testing program. The <span class="annotationtag">@BeforeClass</span>
+annotation tells JUnit to execute a method before any tests are run. The <span class="annotationtag">@AfterClass</span>
+annotation tells JUnit to execute a method after all tests have been run. This is useful for creating and then closing network or database connections
+needed by the tests.
+</p>
 <p></p>
 <br>
 <pre class="prettyprint linenums:15">
