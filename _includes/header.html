@@ -25,7 +25,8 @@
             var originalCol = randomLinks.css('color');
             var originalOpacity = randomLinks.css('opacity');
             randomLinks.hoverIntent(function() { //mouseover
-                var col = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+                var col = 'rgb(' + (Math.floor(Math.random() * 128)+128) + ',' + (Math.floor(Math.random() * 128)+128) + ',' + (Math.floor(Math.random()
+                * 128)+128) + ')';
                 $(this).animate({
                     color: col,
                     opacity: 1.0
