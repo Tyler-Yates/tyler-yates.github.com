@@ -1,0 +1,200 @@
+---
+layout: default
+title: JUnit Testing
+tags:
+- Java
+- JUnit
+- Testing
+---
+
+{% include header.html %}
+<h3>{{ page.title }}</h3>
+JUnit is a great tool that enables Java developers to easily test their code. The primary goal of
+unit testing is to take the smallest piece of testable software in the application, isolate it from
+the remainder of the code, and determine whether it behaves exactly as you expect.<sup><a
+href="http://msdn.microsoft.com/en-us/library/aa292197%28v=vs.71%29.aspx" target="_blank">[1]</a></sup>
+ In Java, methods are often the smallest pieces of testable software. JUnit allows you to test individual
+methods by defining input and making assertions about what the output should be for those inputs.
+<p><hr></p>
+Let's dive right in with an example of some code that could use some testing:
+<pre class="prettyprint linenums">
+public class StringSearch {
+    /**
+     * Returns the first string in the array that starts with the given character. If no String is
+     * found, null is returned. The order of the strings in the array is not changed.
+     *
+     * @param strings     the array of Strings to search
+     * @param firstLetter the first letter to search for
+     * @return the first name beginning with the given letter or null otherwise
+     */
+    public static String findFirstOccurence(String[] strings, char firstLetter) {
+        for (String string : strings) {
+            if (string.charAt(0) == firstLetter) {
+                return string;
+            }
+        }
+        return null;
+    }
+}
+</pre>
+<br>
+Let's create a new file that will contain all of our test code for the above class. Standard practice is to
+name the file <span class="vartag">[Classname]Test.java</span> to indicate which class you are testing in that file.
+<pre class="prettyprint linenums">
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+public class StringSearchTest {
+    private static String[] strings;
+
+    @Before
+    public void initialize() {
+        strings = new String[]{"bob", "joe", "sue", "max", "jan"};
+    }
+
+    @Test
+    public void testSuccessfulFind() {
+        String result = StringSearch.findFirstOccurence(strings, 'j');
+        assertEquals("joe", result);
+    }
+
+    @Test
+    public void testUnsuccessfulFind() {
+        String result = StringSearch.findFirstOccurence(strings, 'z');
+        assertNull(result);
+    }
+
+    @Test
+    public void testNullArray() {
+        String result = StringSearch.findFirstOccurence(null, 'z');
+        assertNull(result);
+    }
+}
+</pre>
+JUnit is not part of the standard java library, so the import statements in lines 1-4 will not resolve without
+importing JUnit into your project.
+<br>
+If you are using Maven, you can add the following to your pom.xml file:
+<br>
+<div class="label">
+&lt;dependencies&gt;
+<br>
+&emsp;&lt;dependency&gt;
+<br>
+&emsp;&emsp;&lt;groupId&gt;junit&lt;/groupId&gt;
+<br>
+&emsp;&emsp;&lt;artifactId&gt;junit&lt;/artifactId&gt;
+<br>
+&emsp;&emsp;&lt;version&gt;4.11&lt;/version&gt;
+<br>
+&emsp;&lt;/dependency&gt;
+<br>
+&lt;/dependencies&gt;
+</div>
+<br>
+Otherwise, you can download JUnit from <a href="https://github.com/junit-team/junit/wiki/Download-and-Install" target="_blank">here</a>
+and put the .jar file on your project's classpath.
+<p></p>
+Now that we have the import statements working, let's dissect the testing code.
+<br>
+<pre class="prettyprint linenums:8">
+    private static String[] strings;
+
+    @Before
+    public void initialize() {
+        strings = new String[]{"bob", "joe", "sue", "max", "jan"};
+    }
+</pre>
+This code segment initializes the input for all of the tests that we will run. The <span class="annotationtag">@Before</span>
+annotation tells JUnit to run the method before every test. This is useful for setting up
+variables that will be used in every test. In this case, every test will have the same input array.
+<p></p>
+<br>
+<pre class="prettyprint linenums:15">
+    @Test
+    public void testSuccessfulFind() {
+        String result = StringSearch.findFirstOccurence(strings, 'j');
+        assertEquals("joe", result);
+    }
+</pre>
+The <span class="annotationtag">@Test</span> annotation tells JUnit that this method represents an
+individual test. Line 17 gets the output from the method we are testing using the input we defined earlier.
+Line 18 is where the magic happens: it tells JUnit that the correct value of <span class="vartag">result</span> should be
+<span class="stringtag">"joe"</span>. If this assertion does not hold, the test will fail and JUnit will
+inform you of the failure. In this case, the assertion holds and the test passes.
+<p></p>
+<br>
+<pre class="prettyprint linenums:21">
+    @Test
+    public void testUnsuccessfulFind() {
+        String result = StringSearch.findFirstOccurence(strings, 'z');
+        assertNull(result);
+    }
+</pre>
+This test is very similar to the previous test but instead of asserting that <span class="vartag">result</span>
+should have a specific value, we are asserting that it should be <span class="keytag">null</span>. The
+Javadoc for the <span class="vartag">findFirstOccurence</span> method states that <span class="keytag">null</span>
+will be returned if no String in the array begins with the given character. Since the input array has no
+String beginning with <span class="stringtag">'z'</span> this test passes.
+<p></p>
+<br>
+<pre class="prettyprint linenums:27">
+    @Test
+    public void testNullArray() {
+        String result = StringSearch.findFirstOccurence(null, 'z');
+        assertNull(result);
+    }
+</pre>
+The final test is almost exactly like the previous one except this time we are passing in a
+<span class="keytag">null</span> array. Unfortunately, the code we wrote does not check if the input array is <span class="keytag">null</span>
+and will thus throw a <span class="typetag">NullPointerException</span> when called. As you would expect, exceptions will cause a JUnit
+test to fail. If we want to have this JUnit test pass we will need to modify our code to check
+for <span class="keytag">null</span> arrays OR tell JUnit that we expect an exception to occur.
+<p></p>
+For the sake of learning, let's assume that we WANT a <span class="typetag">NullPointerException</span> to be thrown if a <span class="keytag">null</span> array
+is passed to the method. In order to get the JUnit test to pass, we modify the code to be:
+<pre class="prettyprint linenums:27">
+    @Test(expected = NullPointerException.class)
+    public void testNullArray() {
+        String result = StringSearch.findFirstOccurence(null, 'z');
+    }
+</pre>
+The <span class="vartag">expected</span> clause on the <span class="annotationtag">@Test</span> annotation
+lets JUnit know that a <span class="typetag">NullPointerException</span> should be thrown SOMEWHERE in this method. This approach is
+not very precise as ANY line in the test that throws a <span class="typetag">NullPointerException</span> will cause the test to pass.
+<p></p>
+A more precise way to check for an exception is the following:
+<pre class="prettyprint linenums:27">
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
+    @Test
+    public void testNullArray() {
+        exception.expect(NullPointerException.class);
+        String result = StringSearch.findFirstOccurence(null, 'z');
+    }
+</pre>
+The <span class="typetag">ExpectedException</span> class handles more precise exception expectations
+by examining a single line of code in the test. In this case, the <span class="vartag">expect</span>
+method called in line 31 tells JUnit that the next line (line 32) should throw a <span class="typetag">NullPointerException</span>. Any line
+of code that throws an exception and is not preceded by a call to <span class="vartag">expect</span> will
+cause the test to fail.
+<p></p>
+One caveat of the <span class="vartag">expect</span> method is that it will cause the test to either pass
+or fail immediately. No further lines of code in the test will be executed.
+<pre class="prettyprint linenums:27">
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
+    @Test
+    public void testNullArray() {
+        exception.expect(NullPointerException.class);
+        String result = StringSearch.findFirstOccurence(null, 'z');
+        System.out.println("hello");
+    }
+</pre>
+This test will successfuly pass, but the <span class="stringtag">"hello"</span> in line 34 will not be
+printed out because the test will terminate immediately after line 33.
+{% include footer.html %}

@@ -81,6 +81,46 @@ h3 {
     font-family: 'Courier New', sans-serif;
 }
 
+.annotationtag {
+     color: #FACD22;
+     font-weight: bold;
+     margin-left: 3px;
+     margin-right: 3px;
+     font-family: 'Source Code Pro', sans-serif;
+ }
+
+.vartag {
+    color: #F1F2F3;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-family: 'Source Code Pro', sans-serif;
+}
+
+.stringtag {
+    color: #EC7600;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-family: 'Source Code Pro', sans-serif;
+}
+
+.keytag {
+    color: #93C763;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-family: 'Source Code Pro', sans-serif;
+}
+
+.typetag {
+    color: #678CB1;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-family: 'Source Code Pro', sans-serif;
+}
+
 .left-bar {
     position: fixed;
     text-align: center;
