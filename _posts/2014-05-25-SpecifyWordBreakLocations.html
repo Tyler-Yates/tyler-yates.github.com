@@ -8,7 +8,39 @@ tags:
 
 {% include header.html %}
 <h3>{{ page.title }}</h3>
-Many times, web browsers break up longs words in ways that don't look very appealing. HTML5 introduced a new tag that allows web developers to help
+Many times, web browsers break up long words in ways that don't look very appealing. HTML5 introduced a new tag that allows web developers to help
 the browser decide where to break up words. The tag is <span class="htmltag">&lt;wbr&gt;</span> and stands for Word Break Opportunity.
+<p></p>
+An important thing to remember about <span class="htmltag">&lt;wbr&gt;</span> is that it is a suggestion, not a rule. The browser can choose to
+ignore the tag if it wants to. If the browser does decide to break the word at the given tag, no hyphen is added. This is good for breaking up long
+numbers for example as no hyphenation is needed.
+<p></p>
+Here is an example of the tag:
+<pre class="prettyprint linenums">
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Word Break Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+This is a long number: <b>&lt;wbr&gt;</b>234,928,347,<b>&lt;wbr&gt;</b>789,020,589,<b>&lt;wbr&gt;</b>120,009,293
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+Now let's look at how this code could be rendered.
+<br>
+The browser could choose to ignore the tags:
+<br>
+<div class="label">
+This is a long number: 234,928,347,789,020,589,120,009,293
+</div>
+<br>
+Or the browser could choose to insert word breaks where you put the tags:
+<br>
+<div class="label">
+This is a long number: <br>234,928,347,<br>789,020,589,<br>120,009,293
+</div>
+<br>
+Note: If you look at the source for this page, you won't see <span class="htmltag">&lt;wbr&gt;</span> tags in the above examples. This is because I use explicit new line tags
+to illustrate an example.
 
 {% include footer.html %}
