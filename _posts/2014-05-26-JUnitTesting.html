@@ -47,7 +47,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class StringSearchTest {
-    private static String[] strings;
+    private String[] strings;
 
     @Before
     public void initialize() {
@@ -100,7 +100,7 @@ and put the .jar file on your project's classpath.
 Now that we have the import statements working, let's dissect the testing code.
 <br>
 <pre class="prettyprint linenums:8">
-    private static String[] strings;
+    private String[] strings;
 
     @Before
     public void initialize() {
@@ -109,7 +109,9 @@ Now that we have the import statements working, let's dissect the testing code.
 </pre>
 This code segment initializes the input for all of the tests that we will run. The <span class="annotationtag">@Before</span>
 annotation tells JUnit to run the method before every test. This is useful for setting up
-variables that will be used in every test. In this case, every test will have the same input array.
+variables that will be used in every test. In this case, every test will have the same input array. By convention unless
+you absolutely need to, you should not make variables static. This ensures that each test is independent of all the other
+tests.
 <p>
 Additionally, you can use the <span class="annotationtag">@After</span> annotation to tell JUnit to
 run a method after every test.
