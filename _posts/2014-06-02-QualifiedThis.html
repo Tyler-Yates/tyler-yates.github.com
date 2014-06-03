@@ -1,0 +1,99 @@
+---
+layout: default
+title: Qualified this
+tags:
+- this
+- Inner Class
+- Outer Class
+---
+
+{% include header.html %}
+<h3>{{ page.title }}</h3>
+Java's <span class="keytag">this</span> keyword is quite a handy little feature. It lets you get a reference to the current
+instance of a particular object which is useful in a variety of cases.
+<p></p>
+Probably the most common use case of the <span class="keytag">this</span> keyword is to disambiguate variable references in
+constructors:
+<br>
+<pre class="prettyprint linenums">
+public class MyClass {
+    private String name;
+
+    public MyClass(String name) {
+        this.name = name;
+    }
+}
+</pre>
+Without the <span class="keytag">this</span> keyword Java would not be able to tell which <span class="vartag">name</span>
+variable we are assigning.
+<p></p>
+A more complex example involves passing <span class="keytag">this</span> as a parameter to a method.
+<br>
+<pre class="prettyprint linenums">
+class Builder {
+    private String name;
+
+    public Builder(String name) {
+        this.name = name;
+    }
+
+    public Creation build() {
+        return new Creation(this);
+    }
+}
+
+class Creation {
+    private Builder builder;
+
+    public Creation(Builder builder) {
+        this.builder = builder;
+    }
+}
+</pre>
+Notice how in line 9 <span class="keytag">this</span> is being passed to the <span class="typetag">Creation</span> constructor.
+Because we are inside of the <span class="typetag">Builder</span> class (referred to as the Outer Class) <span class="keytag">this</span> is an instance
+of the <span class="typetag">Builder</span> class. Thus, <span class="keytag">this</span> is a valid paramter to pass to the
+<span class="typetag">Creation</span> constructor because its type is <span class="typetag">Builder</span>.
+<p></p>
+Now let's look at some even more complex code:
+<br>
+<pre class="prettyprint linenums">
+interface Builder {
+    public Creation build();
+}
+
+class MasterBuilder {
+    private final String name;
+
+    public MasterBuilder(String name) {
+        this.name = name;
+    }
+
+    private Builder builder = new Builder() {
+        @Override
+        public Creation build() {
+            return new Creation(MasterBuilder.this);
+        }
+    };
+
+    public Builder getBuilder() {
+        return builder;
+    }
+}
+
+class Creation {
+    private MasterBuilder builder;
+
+    public Creation(MasterBuilder builder) {
+        this.builder = builder;
+    }
+}
+</pre>
+The <span class="typetag">Builder</span> instance created on line 12 is an Inner Class because it is defined inside of
+another class (the Outer Class). When we call the <span class="typetag">Creation</span> constructor in line 15 we need to
+use <span class="keytag">this</span> to get a reference to the current instance of <span class="typetag">MasterBuilder</span>
+but inside of the Inner Class <span class="keytag">this</span> is an instance of <span class="typetag">Builder</span> which is
+the wrong type. To fix this we use a Qualified <span class="keytag">this</span> to specify that we want the current instance
+of the Outer Class. This is as simple as using: <span class="typetag">[OuterClassName]</span>.<span class="keytag">this</span> in
+your code.
+{% include footer.html %}
